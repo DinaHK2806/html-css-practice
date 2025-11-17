@@ -3,44 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+   <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
   <!-- Sign-up form start -->
+  <div class="box">
 
-  Stay updated!
 
-  Join 60,000+ product managers receiving monthly updates on:
+    <h1 class="title">Stay updated!</h1>
 
-  Product discovery and building what matters
-  Measuring to ensure updates are a success
-  And much more!
+    <p class="p1">Join 60,000+ product managers receiving monthly<br>
+      updates on:</p>
 
-  Email address
-  email@company.com
+    <div class="list">
+      <img src="assets/images/icon-list.svg" class="icon">
+      <span>Product discovery and building what matters</span>
+    </div>
+        <div class="list">
+      <img src="assets/images/icon-list.svg" class="icon">
+      <span>Measuring to ensure updates are a success</span>
+    </div>
+        <div class="list">
+      <img src="assets/images/icon-list.svg" class="icon">
+      <span>And much more!</span>
+    </div>
 
-  Subscribe to monthly newsletter
+<div class="email-titles">
+  <div class="titles-style">
+    <h3>Email address</h3>
+    <span id="email-error" class="error-email">Valid email required</span>
+    </div>
+    </div>
+    <input type="email" id="email" class="input-email" placeholder="email@company.com">
+
+    <div class=box-btn>
+      <button type="submit" class="submit-btn" onclick="login()">Subscribe to monthly newsletter</button>
+    </div>
+
+    <div class="img-box">
+    <img src="assets/images/illustration-sign-up-desktop.svg" class="ill-sgn-dsk">
+    </div>
+  </div>
 
   <!-- Sign-up form end -->
 
   <!-- Success message start -->
+<div id="success-box" class="success-box">
+  <img src="assets/images/icon-success.svg" class="success-img">
+  <h1 class="success-title">Thanks for subscribing!</h1>
 
-  Thanks for subscribing!
-
-  A confirmation email has been sent to ash@loremcompany.com. 
-  Please open it and click the button inside to confirm your subscription.
-
-  Dismiss message
+  <div class="success-p">A confirmation email has been sent to <strong>ash@loremcompany.com</strong>. 
+  Please open it and click<br> the button inside to confirm your subscription.</div>
+  <div class="success-btn">
+  <button type="submit" class="submit-btn">Dismiss message</button>
+  </div>
+  </div>
 
   <!-- Success message end -->
   
@@ -48,5 +75,22 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script>
+    function login(){
+      const email=document.getElementById('email').value;
+      const emailInput = document.getElementById('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(emailRegex.test(email)){
+      document.querySelector('.box').style.display = 'none';
+      document.getElementById('success-box').style.display = 'block';
+      }
+      else{
+        document.getElementById('email-error').style.display = 'block';
+        emailInput.style.borderColor = 'hsl(4, 100%, 67%)';
+        emailInput.style.backgroundColor='hsl(4, 100%, 95%)';
+      }
+
+    }
+  </script>
 </body>
 </html>
